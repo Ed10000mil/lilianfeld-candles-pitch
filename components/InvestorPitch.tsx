@@ -6,32 +6,31 @@ import { Flame, DollarSign, ShieldCheck, Zap, Target, Users, Award, Package, Rec
 import Image from 'next/image'
 
 const salesData = [
-  { month: 'Jan', sales: 15000 },
-  { month: 'Feb', sales: 25000 },
-  { month: 'Mar', sales: 35000 },
-  { month: 'Apr', sales: 50000 },
-  { month: 'May', sales: 75000 },
+  { month: 'Oct', sales: 10000 },
+  { month: 'Nov', sales: 15000 },
+  { month: 'Dec', sales: 30000 },
+  { month: 'Jan', sales: 50000 },
+  { month: 'Feb', sales: 75000 },
 ]
 
 const growthData = [
-  { year: '2023', value: 100 },
-  { year: '2024', value: 250 },
-  { year: '2025', value: 500 },
+  { year: '2024', value: 100 },
+  { year: '2025', value: 300 },
   { year: '2026', value: 900 },
-  { year: '2027', value: 1500 },
+  { year: '2027', value: 2000 },
 ]
 
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8']
 
 const partnerData = [
-  { name: "St Regis, The Palm", units: 44, revenue: 660 },
-  { name: "Park Hyatt", units: 80, revenue: 1200 },
-  { name: "One&Only, The Palm", units: 380, revenue: 5700 },
+  { name: "St Regis, The Palm", units: 44, revenue: 500 },
+  { name: "Park Hyatt", units: 80, revenue: 850 },
+  { name: "One&Only, The Palm", units: 380, revenue: 1500 },
   { name: "St Regis, Abu Dhabi", units: 30, revenue: 450 },
-  { name: "Ritz Carlton", units: 70, revenue: 1050 },
-  { name: "Twitty", units: 12, revenue: 180 },
-  { name: "Surf Club", units: 35, revenue: 525 },
-  { name: "Event Planners", units: 300, revenue: 4500 }
+  { name: "Ritz Carlton", units: 70, revenue: 700 },
+  { name: "Twitty", units: 12, revenue: 100 },
+  { name: "Surf Club", units: 35, revenue: 300 },
+  { name: "Event Planners", units: 300, revenue: 800 }
 ]
 
 const businessModelData = {
@@ -141,24 +140,21 @@ const CustomNode: React.FC<CustomNodeProps> = ({ x, y, width, height, index, pay
 export default function Component() {
   return (
     <div className="min-h-screen bg-[#F5F5F5] text-[#4A4A4A] font-['Avenir', sans-serif]">
-      <header className="bg-[#FFF5E6] py-12 shadow-lg">
-        <div className="container mx-auto px-4 flex items-center">
-          <div className="w-32 h-32 relative mr-12">
-            <Image
-              src="https://i.ibb.co/HTHBPdw/logo.png"
-              alt="Lilianfeld Candles logo"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div className="flex-grow pl-8">
-            <h1 className="text-5xl font-bold text-center text-[#4A4A4A] mb-4 animate-fade-in-down">Lilianfeld Candles</h1>
-            <p className="text-xl text-center text-[#4A4A4A] opacity-90 animate-fade-in-up font-light italic">The Warmth of Tradition, the Convenience of Innovation</p>
-          </div>
-        </div>
-      </header>
+      <header className="bg-[#FFF5E6] py-6 shadow-lg">
+  <div className="container mx-auto px-4 flex justify-center">
+    <div className="w-32 h-32 relative">
+      <Image
+        src="https://i.ibb.co/HTHBPdw/logo.png"
+        alt="Lilianfeld Candles logo"
+        width={128}
+        height={128}
+        style={{ objectFit: 'contain' }}
+      />
+    </div>
+  </div>
+</header>
 
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-10 py-16">
         <Tabs defaultValue="problem" className="space-y-16">
           <div className="bg-[#FFF5E6] p-1 rounded-lg shadow-md">
             <TabsList className="w-full grid grid-cols-5 bg-transparent p-0">
@@ -167,7 +163,7 @@ export default function Component() {
                   key={tab}
                   value={tab}
                   className={`
-                    text-lg py-3 px-4 transition-all duration-300
+                    text-lg py-2 px-4 transition-all duration-300
                     ${index === 0 ? 'rounded-l-lg' : ''}
                     ${index === 4 ? 'rounded-r-lg' : ''}
                     data-[state=active]:bg-[#B8D8BA] data-[state=active]:text-[#4A4A4A]
@@ -273,7 +269,7 @@ export default function Component() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="product" className="space-y-16 animate-fade-in">
+<TabsContent value="product" className="space-y-16 animate-fade-in">
             <Card className="overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl">
               <CardHeader className="bg-[#FFF5E6] text-[#4A4A4A]">
                 <CardTitle className="text-3xl">Lilianfeld Candles Product</CardTitle>
@@ -281,21 +277,21 @@ export default function Component() {
               <CardContent className="p-8 bg-white">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="space-y-4">
-                    <div className="relative aspect-[3/4] bg-[#F0EAD6] rounded-lg overflow-hidden">
+                    <div className="relative w-full h-96 bg-white rounded-lg overflow-hidden shadow-md">
                       <Image
                         src="https://i.postimg.cc/N02TXRyS/Picture1.png"
                         alt="Lilianfeld Candle product showcasing its elegant design with a golden base and a glowing flame"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{ objectFit: 'contain' }}
                         className="transition-transform duration-300 hover:scale-105"
                       />
                     </div>
-                    <div className="relative aspect-[16/9] bg-[#F0EAD6] rounded-lg overflow-hidden">
+                    <div className="relative w-full h-48 bg-white rounded-lg overflow-hidden shadow-md">
                       <Image
-                        src="https://i.ibb.co/Dg5F8HT/Picture2.png"
+                        src="https://i.postimg.cc/85DVrJTD/Picture2.png"
                         alt="Lilianfeld Candle product lineup showing various sizes and designs"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{ objectFit: 'contain'}}
                         className="transition-transform duration-300 hover:scale-105"
                       />
                     </div>
@@ -413,7 +409,7 @@ export default function Component() {
               <CardContent className="p-8 bg-white">
                 <div className="space-y-12">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-4">Integrated Business Model</h3>
+
                     <div className="h-96">
                       <ResponsiveContainer width="100%" height="100%">
                         <Sankey
@@ -443,7 +439,7 @@ export default function Component() {
                           <Tooltip contentStyle={{ fontWeight: 'bold' }} />
                           <Legend formatter={(value) => <span style={{ color: '#4A4A4A', fontWeight: 'bold' }}>{value}</span>} />
                           <Bar yAxisId="left" dataKey="units" name="Units Sold" fill="#45B7D1" />
-                          <Bar yAxisId="right" dataKey="revenue" name="Revenue ($)" fill="#FF6B6B" />
+                          <Bar yAxisId="right" dataKey="revenue" name="Monthly Revenue ($)" fill="#FF6B6B" />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
