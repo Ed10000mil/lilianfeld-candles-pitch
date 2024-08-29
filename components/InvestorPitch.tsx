@@ -85,7 +85,13 @@ const comparisonData = [
   { subject: 'Customizability', Lilianfeld: 120, Traditional: 50 },
 ]
 
-const MarketSizeCircle = ({ size, label, sublabel }) => (
+interface MarketSizeCircleProps {
+  size: string;
+  label: string;
+  sublabel: string;
+}
+
+const MarketSizeCircle: React.FC<MarketSizeCircleProps> = ({ size, label, sublabel }) => (
   <div className="flex flex-col items-center">
     <div className={`rounded-full bg-[#45B7D1] flex items-center justify-center text-white font-bold ${size}`}>
       {label}
@@ -94,7 +100,19 @@ const MarketSizeCircle = ({ size, label, sublabel }) => (
   </div>
 )
 
-const CustomNode = ({ x, y, width, height, index, payload }) => {
+interface CustomNodeProps {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  index: number;
+  payload: {
+    name: string;
+    color: string;
+  };
+}
+
+const CustomNode: React.FC<CustomNodeProps> = ({ x, y, width, height, index, payload }) => {
   const isOut = x + width + 6 > 1000
   return (
     <Layer key={`CustomNode${index}`}>
@@ -400,7 +418,7 @@ export default function Component() {
                       <ResponsiveContainer width="100%" height="100%">
                         <Sankey
                           data={businessModelData}
-                          node={<CustomNode />}
+                          node={(nodeProps) => <CustomNode {...nodeProps} />}
                           link={{ stroke: '#B8D8BA' }}
                           nodePadding={50}
                           margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
